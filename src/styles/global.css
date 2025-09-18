@@ -1,0 +1,53 @@
+ @import "tailwindcss";
+ @plugin '../../hero.js';
+ @source '../../node_modules/@heroui/theme/dist/**/*.{js,ts,jsx,tsx}';
+ @custom-variant dark (&:is(.dark *));
+
+ @font-face {
+   font-family: "Sohne";
+   src: url("/fonts/sohne/Test Söhne/TestSöhne-Buch.woff") format("woff");
+   font-weight: 200;
+   font-style: normal;
+   font-display: swap;
+ }
+
+ /* Use it app-wide */
+ :root {
+   --font-sohne: "Sohne", system-ui, -apple-system, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+ }
+
+ .mySwiper {
+   width: 100%;
+   height: 550px;
+ }
+
+ .swiper-slide-next+.swiper-slide+.swiper-slide {
+   opacity: .5;
+ }
+
+ .mySwiper .swiper-slide {
+   backdrop-filter: blur(4px);
+
+   transition: opacity 0.3s ease;
+ }
+
+ .mySwiper .swiper-slide-active {
+   opacity: 1;
+ }
+ .mySwiper .swiper-slide::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.5); 
+  transition: opacity 0.3s ease;
+  width: 100%;
+  border-radius: 10px !important;
+  overflow: hidden;
+  min-width: 350px !important ;
+  border-radius: 10px !important;
+  pointer-events: none; /* Image still clickable */
+}
+
+.mySwiper .swiper-slide-active::after {
+  background: transparent; /* Remove overlay from active slide */
+}
